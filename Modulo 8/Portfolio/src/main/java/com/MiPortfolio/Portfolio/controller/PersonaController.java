@@ -1,7 +1,7 @@
 package com.MiPortfolio.Portfolio.controller;
 
-import com.MiPortfolio.Portfolio.model.ExperienciaLaboral;
 import com.MiPortfolio.Portfolio.model.Persona;
+import com.MiPortfolio.Portfolio.service.ExperienciaService;
 import com.MiPortfolio.Portfolio.service.PersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonaController {
 
 @Autowired
-    private PersonaService personaService;    
+    private PersonaService personaService;
+    private ExperienciaService experienciaService;
 
     @PostMapping ("/new") //guarda Persona en BD
     public void guardar(@RequestBody Persona pers)    
@@ -66,20 +67,6 @@ public class PersonaController {
     return personaGuardada;
     
     }
-    
-    
-    @PutMapping ("/{idPersona}/experiencia") //agrega experiencia
-    public void agregarExperienciaLaboral(@PathVariable Long idPersona,
-                                          @RequestBody ExperienciaLaboral exp){
-        Persona personaGuardada = personaService.findPersona(idPersona);
-   
-        if(personaGuardada == null)
-            return;
-        
-        exp.setPersona(personaGuardada);
-        personaGuardada.getExperienciaLaboral().add(exp);
-        
-        personaService.savePersona(personaGuardada);
-    }
 }
-//Falta el resto del CRUD de experiencia
+    
+   

@@ -36,7 +36,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(Long id, String nombre, String apellido, String sobreMi, String provincia, Set<ExperienciaLaboral> experienciaLaboral) {
+    public Persona(Long id, String nombre, String apellido, String sobreMi, String provincia, List<ExperienciaLaboral> experienciaLaboral) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

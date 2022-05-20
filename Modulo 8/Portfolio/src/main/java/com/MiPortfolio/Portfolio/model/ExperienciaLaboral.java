@@ -30,7 +30,7 @@ public class ExperienciaLaboral
         
 	public Long idEmpleo;
         
-        @ManyToOne(cascade= CascadeType.PERSIST)
+        @ManyToOne(cascade = CascadeType.PERSIST)
         @JoinColumn(name = "idPersona")
         private Persona persona;
 

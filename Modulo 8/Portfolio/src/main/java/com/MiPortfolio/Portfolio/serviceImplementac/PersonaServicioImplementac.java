@@ -8,14 +8,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.MiPortfolio.Portfolio.repository.IPersonaRepository;
-import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class PersonaServicioImplementac implements PersonaService{
     
 @Autowired //inyecta una dependencia dentro de otra
     private IPersonaRepository persoRepo;
+
 @Autowired //inyecta una dependencia dentro de otra
     private IExperienciaLaboralRepository expRepo;
 
@@ -42,31 +41,5 @@ public class PersonaServicioImplementac implements PersonaService{
       //sino la encuentra, devuelve: Null
     public Persona findPersona(Long id) {
            return persoRepo.findById(id).orElse(null);
-    }
-
-    @Override
-    public void borrarExperienciaLaboral(Long id) {
-        expRepo.deleteById(id);
-    }
-
-    @Override
-    public void saveExperienciaLaboral(ExperienciaLaboral exp) {
-        expRepo.save(exp);
-    }
-
-    @Override
-    public ExperienciaLaboral findExperienciaLaboral(Long id) {
-        return expRepo.findById(id).orElse(null);
-    }
-
-    @Override
-    public Set<ExperienciaLaboral> getExperienciaLaboral(Long idPersona) {
-    Persona persona = persoRepo.findById(idPersona).orElse(null);
-    if(persona != null){
-        return persona.getExperienciaLaboral();
-    }
-    
-    return null;
-    }
-    
+    }    
 }
