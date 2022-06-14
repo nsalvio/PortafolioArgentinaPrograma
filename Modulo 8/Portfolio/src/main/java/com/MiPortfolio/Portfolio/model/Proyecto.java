@@ -36,9 +36,6 @@ public class Proyecto {
     @JoinColumn(name = "idPersona")
     private Persona persona;
     
-    public Proyecto(){
-    }
-    
     public Proyecto (Long idProyecto, String nombreDelProyecto, java.sql.Date fechaDeRealizacion, String descripcion, String link){
     this.idProyecto = idProyecto;
     this.nombreDelProyecto = nombreDelProyecto;

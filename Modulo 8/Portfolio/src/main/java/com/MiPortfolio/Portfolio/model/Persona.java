@@ -42,9 +42,6 @@ public class Persona {
     
     @OneToMany(fetch = FetchType.LAZY,mappedBy="persona",cascade = CascadeType.ALL)
     private List<Skills> skills;
-        
-    public Persona() {
-    }
 
     public Persona(Long id, String nombre, String apellido, String sobreMi, String provinciaYPais, String fotoPerfil, List<ExperienciaLaboral> experienciaLaboral, List<Educacion> educacion, List<Proyecto> proyecto, List<Skills> skills) {
         this.id = id;

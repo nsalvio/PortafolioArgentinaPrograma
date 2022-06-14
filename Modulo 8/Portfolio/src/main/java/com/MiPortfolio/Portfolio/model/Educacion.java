@@ -32,9 +32,6 @@ public class Educacion {
     private java.sql.Date fechaFin;
 
     public Long idEducacion;
-
-    public Educacion() {
-    }
     
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idPersona")

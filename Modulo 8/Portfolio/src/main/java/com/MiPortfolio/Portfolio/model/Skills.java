@@ -28,9 +28,6 @@ public class Skills {
     private int procentaje;
     
     public Long idSkills;
-
-public Skills() {
-    }
     
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idPersona")
