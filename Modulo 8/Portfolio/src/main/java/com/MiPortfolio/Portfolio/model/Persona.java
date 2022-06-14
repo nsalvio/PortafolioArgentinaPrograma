@@ -2,7 +2,6 @@ package com.MiPortfolio.Portfolio.model; //modelado de clases
 
 import com.sun.istack.NotNull;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,25 +22,41 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull //el campo no puede estar vacío
-
+    
     private Long id;
     private String nombre;
     private String apellido;
+    private String titulo;
     private String sobreMi;
-    private String provincia;
+    private String provinciaYPais;
+    private String fotoPerfil;
     
-    @OneToMany(fetch = FetchType.EAGER,mappedBy="persona",cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="persona",cascade = CascadeType.ALL)
     private List<ExperienciaLaboral> experienciaLaboral;
+    
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="persona",cascade = CascadeType.ALL)
+    private List<Educacion> educacion;
 
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="persona",cascade = CascadeType.ALL)
+    private List<Proyecto> proyecto;
+    
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="persona",cascade = CascadeType.ALL)
+    private List<Skills> skills;
+        
     public Persona() {
     }
 
-    public Persona(Long id, String nombre, String apellido, String sobreMi, String provincia, List<ExperienciaLaboral> experienciaLaboral) {
+    public Persona(Long id, String nombre, String apellido, String sobreMi, String provinciaYPais, String fotoPerfil, List<ExperienciaLaboral> experienciaLaboral, List<Educacion> educacion, List<Proyecto> proyecto, List<Skills> skills) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.titulo = titulo;
         this.sobreMi = sobreMi;
-        this.provincia = provincia;
+        this.provinciaYPais = provinciaYPais;
+        this.fotoPerfil = fotoPerfil;
         this.experienciaLaboral = experienciaLaboral;
+        this.educacion = educacion;
+        this.proyecto = proyecto;
+        this.skills = skills;
     }
 }

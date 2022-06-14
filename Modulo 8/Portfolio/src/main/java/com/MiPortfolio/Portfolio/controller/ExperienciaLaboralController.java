@@ -7,6 +7,7 @@ import com.MiPortfolio.Portfolio.service.PersonaService;
 import java.util.Iterator;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController //capa controladora, atiende las solicitudes entrantes
-@RequestMapping("persona/{idPersona}/ExperienciaLaboral")
-
+@RequestMapping("persona/{idPersona}/experiencia")
+@CrossOrigin(origins = "*")
 public class ExperienciaLaboralController {
 
     @Autowired
@@ -48,7 +49,7 @@ public class ExperienciaLaboralController {
         
         for (Iterator<ExperienciaLaboral> iterator = experiencia.iterator(); iterator.hasNext();) {
             ExperienciaLaboral next = iterator.next();
-            next.setPersona(null);
+            next.getPersona(null);
         }
         
         return experiencia;
@@ -60,7 +61,7 @@ public class ExperienciaLaboralController {
             @PathVariable Long idPersona,
             @PathVariable Long id) {
         ExperienciaLaboral experiencia = experienciaService.findExperienciaLaboral(id);
-        experiencia.setPersona(null);
+        experiencia.getPersona(null);
         return experiencia;
     }
 
@@ -70,5 +71,4 @@ public class ExperienciaLaboralController {
     }
 }
                 
-               
-//Falta el resto del CRUD de experiencia
+              

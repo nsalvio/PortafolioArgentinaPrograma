@@ -14,39 +14,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity //mapea la entidad
-@Table(name = "educación") //crea y nombra la tabla educación
+@Table(name ="skills") //crea y nombra la tabla Skills
 @AllArgsConstructor //constructor con argumentos
 @NoArgsConstructor //constructor vacío
-@Data //gatters y setters
-public class Educacion {
-
+@Data //crea getters y setter
+public class Skills {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    private Long Id;
+    private Long id;
+    private String nombreSkill;
+    private int procentaje;
+    
+    public Long idSkills;
 
-    private String carrera;
-    private Boolean estudiaActualmente;
-    private String instituto;
-    private java.sql.Date fechaInicio;
-    private java.sql.Date fechaFin;
-
-    public Long idEducacion;
-
-    public Educacion() {
+public Skills() {
     }
     
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idPersona")
     private Persona persona;
 
-    public Educacion(Long idEducacion, String carrera, Boolean estudiaActualmente, String instituto, java.sql.Date fechaInicio, java.sql.Date fechaFin) {
-        this.idEducacion = idEducacion;
-        this.carrera = carrera;
-        this.estudiaActualmente = estudiaActualmente;
-        this.instituto = instituto;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-
+    public Skills(Long idSkills, String nombreSkill, int Porcentaje) {
+        this.idSkills = idSkills;
+        this.nombreSkill = nombreSkill;
+        this.procentaje = procentaje;
     }
 }
